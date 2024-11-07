@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Diseño de Grecas en Corte de Cabello</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: #2c3e50;
+            text-align: center;
+            margin-top: 1em;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        section {
+            max-width: 800px;
+            width: 90%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 1em 0;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #3498db;
+            margin-bottom: 0.5em;
+            animation: fadeIn 1.2s ease;
+        }
+
+        p, ul, li {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 0.5em 0;
+        }
+
+        /* Botones */
+        .cta-button {
+            display: inline-block;
+            margin-top: 1em;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animaciones para secciones */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        /* Decoración de secciones */
+        section:nth-child(even) {
+            background-color: #ecf0f1;
+        }
+
+        /* Estilo de Listas */
+        ul li::before {
+            content: "✔";
+            color: #2ecc71;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Tarjeta de Testimonios */
+        .testimonial {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .testimonial footer {
+            font-weight: bold;
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+
+<section id="course-grecas">
+    <header>
+        <h1>Curso de Diseño de Grecas en Corte de Cabello</h1>
+    </header>
+
+    <section class="course-intro">
+        <h2>Introducción al Curso</h2>
+        <p>Este curso de diseño de grecas está diseñado para barberos y estilistas que desean mejorar sus habilidades y ofrecer diseños únicos y modernos. Aprenderás técnicas y estilos que están en tendencia para personalizar cortes de cabello con diseños de grecas, líneas y figuras, adaptados al gusto del cliente.</p>
+    </section>
+
+    <section class="course-content">
+        <h2>Contenido del Curso</h2>
+        <ul>
+            <li>Fundamentos del Diseño de Grecas</li>
+            <li>Herramientas y Materiales</li>
+            <li>Técnicas de Dibujo y Estilo</li>
+            <li>Prácticas en Maniquíes y Modelos</li>
+            <li>Innovación y Personalización</li>
+        </ul>
+    </section>
+
+    <section class="course-benefits">
+        <h2>Beneficios del Curso</h2>
+        <ul>
+            <li>Perfeccionamiento de Habilidades</li>
+            <li>Ampliación de Servicios</li>
+            <li>Certificación Profesional</li>
+        </ul>
+    </section>
+
+    <section class="course-duration">
+        <h2>Duración del Curso</h2>
+        <p>Modalidad Intensiva: 1 semana con sesiones diarias de 4 horas.</p>
+        <p>Modalidad Regular: 3 semanas, con 2 sesiones semanales de 3 horas.</p>
+    </section>
+
+    <section class="course-requirements">
+        <h2>Requisitos</h2>
+        <ul>
+            <li>Experiencia básica en barbería o estilismo.</li>
+            <li>Herramientas propias: Máquina de corte, tijeras y navajas.</li>
+        </ul>
+    </section>
+
+    <section class="course-material">
+        <h2>Material Incluido</h2>
+        <ul>
+            <li>Manual del curso con imágenes y descripciones detalladas.</li>
+            <li>Acceso a videos y tutoriales adicionales.</li>
+            <li>Kit de práctica que incluye plantillas para diseños de grecas.</li>
+        </ul>
+    </section>
+
+    <section class="course-instructors">
+        <h2>Instructores</h2>
+        <p>Instructor Principal: Diego Torres, barbero con más de 10 años de experiencia en diseño de cortes personalizados.</p>
+        <p>Asistente: Marta López, especialista en técnicas de diseño moderno.</p>
+    </section>
+
+    <section class="course-testimonials">
+        <h2>Testimonios de Estudiantes</h2>
+        <blockquote class="testimonial">
+            <p>“Este curso me ayudó a perfeccionar mi técnica y a atraer nuevos clientes interesados en diseños únicos.”</p>
+            <footer>- Carlos M.</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+            <p>“Los instructores son pacientes y expertos; aprendí mucho y ahora hago diseños increíbles.”</p>
+            <footer>- Lucía G.</footer>
+        </blockquote>
+    </section>
+
+    <section class="course-registration">
+        <h2>Inscripción y Costo</h2>
+        <p>Costo del curso: $1,200 MXN</p>
+        <p>Inscripción: Puedes inscribirte en línea o en la recepción de nuestra barbería.</p>
+        <a href="inscripcion.html" class="cta-button">¡Inscríbete ahora!</a>
+    </section>
+
+    <section class="course-contact">
+        <h2>Contacto</h2>
+        <p>Para más información, contáctanos a través de:</p>
+        <p>Teléfono: 5614992142</p>
+        <p>Email: <a href="mailto:franjavis511@gmail.com">franjavis511@gmail.com</a></p>
+    </section>
+
+    <section class="course-location">
+        <h2>Ubicación y Horarios</h2>
+        <p>Ubicación: Barbería 82, Av. Juárez Sur, Nacozari, Tizayuca, Hgo.</p>
+        <p>Horarios de clase: Consulta con nuestro equipo los horarios disponibles.</p>
+    </section>
+</section>
+
+</body>
+</html>

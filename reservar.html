@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Cita</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        main {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .sub-option {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reserva tu Cita</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Escoge tu horario y servicio</h2>
+            <form id="reservation-form">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <label for="name">Nombre del Cliente:</label>
+                            <input type="text" id="name" name="name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="date">Fecha:</label>
+                            <input type="date" id="date" name="date" required>
+                        </td>
+                        <td>
+                            <label for="time">Hora:</label>
+                            <input type="time" id="time" name="time" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="service">Servicio:</label>
+                            <select id="service" name="service" required onchange="showSubOptions()">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="corte">Corte de pelo</option>
+                                <option value="afeitado">Afeitado</option>
+                                <option value="arreglo-barba">Arreglo de barba</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="sub-option" id="corte-options">
+                        <td colspan="2">
+                            <label for="corte-tipo">Tipo de Corte de Pelo:</label>
+                            <select id="corte-tipo" name="corte-tipo">
+                                <option value="clasico">Corte Clásico</option>
+                                <option value="degradado">Degradado</option>
+                                <option value="fade">Fade</option>
+                                <option value="moderno">Moderno</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="sub-option" id="afeitado-options">
+                        <td colspan="2">
+                            <label for="afeitado-tipo">Tipo de Afeitado:</label>
+                            <select id="afeitado-tipo" name="afeitado-tipo">
+                                <option value="clasico">Afeitado Clásico</option>
+                                <option value="a-navaja">Afeitado a Navaja</option>
+                                <option value="con-toalla">Afeitado con Toalla Caliente</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="sub-option" id="arreglo-barba-options">
+                        <td colspan="2">
+                            <label for="barba-tipo">Tipo de Arreglo de Barba:</label>
+                            <select id="barba-tipo" name="barba-tipo">
+                                <option value="recorte-simple">Recorte Simple</option>
+                                <option value="perfilado">Perfilado</option>
+                                <option value="estilizado">Estilizado Completo</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="promo">Promoción:</label>
+                            <select id="promo" name="promo">
+                                <option value="">Sin promoción</option>
+                                <option value="descuento10">10% de descuento</option>
+                                <option value="2x1">2x1 en cortes</option>
+                                <option value="regalo">Producto de regalo</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button type="button" onclick="generatePDF()">Enviar y Descargar PDF</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function showSubOptions() {
+            document.querySelectorAll('.sub-option').forEach(option => {
+                option.style.display = 'none';
+            });
+
+            const service = document.getElementById('service').value;
+            if (service === 'corte') {
+                document.getElementById('corte-options').style.display = 'table-row';
+            } else if (service === 'afeitado') {
+                document.getElementById('afeitado-options').style.display = 'table-row';
+            } else if (service === 'arreglo-barba') {
+                document.getElementById('arreglo-barba-options').style.display = 'table-row';
+            }
+        }
+
+        async function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const form = document.getElementById('reservation-form');
+    const formData = new FormData(form);
+
+    const doc = new jsPDF();
+    doc.text('Reserva de Cita', 10, 10);
+    doc.text(`Nombre: ${formData.get('name')}`, 10, 20);
+    doc.text(`Fecha: ${formData.get('date')}`, 10, 30);
+    doc.text(`Hora: ${formData.get('time')}`, 10, 40);
+    doc.text(`Servicio: ${formData.get('service')}`, 10, 50);
+
+    if (formData.get('corte-tipo')) {
+        doc.text(`Tipo de Corte: ${formData.get('corte-tipo')}`, 10, 60);
+    } else if (formData.get('afeitado-tipo')) {
+        doc.text(`Tipo de Afeitado: ${formData.get('afeitado-tipo')}`, 10, 60);
+    } else if (formData.get('barba-tipo')) {
+        doc.text(`Tipo de Barba: ${formData.get('barba-tipo')}`, 10, 60);
+    }
+
+    doc.text(`Promoción: ${formData.get('promo')}`, 10, 70);
+
+    const pdfBlob = doc.output('blob');
+
+    // Enviar el PDF al servidor
+    const email = prompt("Ingresa tu correo electrónico para recibir el PDF:");
+    const formDataForServer = new FormData();
+    formDataForServer.append('pdf', pdfBlob, 'reserva.pdf');
+    formDataForServer.append('email', email);
+
+    try {
+        const response = await fetch('/send-email', {
+            method: 'POST',
+            body: formDataForServer
+        });
+
+        if (response.ok) {
+            alert('Correo enviado con éxito.');
+        } else {
+            alert('Error al enviar el correo.');
+        }
+    } catch (error) {
+        alert('Error al enviar el correo: ' + error.message);
+    }
+}
+
+        const express = require('express');
+const nodemailer = require('nodemailer');
+const multer = require('multer');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+const upload = multer({ dest: 'uploads/' });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/send-email', upload.single('pdf'), (req, res) => {
+    const { email } = req.body;
+    const pdfPath = path.join(__dirname, req.file.path);
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'your-email@gmail.com',
+            pass: 'your-email-password'
+        }
+    });
+
+    let mailOptions = {
+        from: 'your-email@gmail.com',
+        to: email,
+        subject: 'Reserva de Cita',
+        text: 'Adjunto se encuentra el PDF con los detalles de tu reserva.',
+        attachments: [
+            {
+                filename: 'reserva.pdf',
+                path: pdfPath
+            }
+        ]
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        fs.unlink(pdfPath, () => { // Elimina el archivo temporal después de enviarlo
+            if (error) {
+                return res.status(500).send(error.toString());
+            }
+            res.send('Correo enviado: ' + info.response);
+        });
+    });
+});
+
+app.listen(3000, () => {
+    console.log('Servidor iniciado en http://localhost:3000');
+});
+
+
+    </script>
+</body>
+</html>

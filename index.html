@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería 82 - La mejor experiencia en barbería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Efecto de navbar y logo reducido */
+        .navbar {
+            background-color: #333;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: padding 0.3s ease;
+        }
+        
+        /* Contenedor central para el logo */
+        .navbar .navbar-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Enlaces de navegación alineados a ambos lados */
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Logo con tamaño ajustable */
+        .navbar img.logo {
+            transition: width 0.3s ease, height 0.3s ease;
+            width: 120px;
+            height: auto;
+        }
+
+        /* Logo reducido al hacer scroll */
+        .navbar.shrink img.logo {
+            width: 60px;
+        }
+
+        /* Fondo con efecto de superposición y animación */
+        .banner {
+            position: relative;
+            height: 100vh;
+            background: url('img/fondo.png') center center/cover no-repeat fixed;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad del overlay */
+        }
+
+        .banner-content {
+            position: relative;
+            color: white;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería 82</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para la barra de anuncios */
+        .announcement-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #444;
+            color: white;
+            padding: 15px; /* Más espacio en la barra de anuncios */
+            font-size: 18px; /* Tamaño de fuente ajustado */
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .arrow {
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 15px;
+            color: #ccc;
+        }
+
+        /* Estilos para la barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px; /* Aumento del padding para más espacio */
+            background-color: #333;
+            margin-top: 60px; /* Ajuste para dar espacio a la barra de anuncios */
+            height: 120px; /* Altura incrementada para acomodar el logo y texto */
+        }
+
+        .navbar-center {
+            text-align: center;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar-title {
+            font-family: 'Graffiti', sans-serif;
+            font-size: 24px; /* Tamaño ajustado */
+            color: #FFF;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px #000;
+        }
+
+        .logo {
+            width: 120px; /* Tamaño de logo aumentado */
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px; /* Tamaño de fuente un poco más grande */
+            padding: 0 10px; /* Espacio entre enlaces */
+        }
+
+        .navbar a i {
+            margin-right: 3px;
+        }
+
+        /* Estilo para reducir el logo y padding al hacer scroll */
+        .navbar.shrink {
+            height: 90px; /* Reducido pero más grande que antes */
+            padding: 10px 20px;
+        }
+
+        .navbar.shrink .logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Distribución de enlaces */
+        .navbar-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Espacio superior para el video */
+        .banner {
+            margin-top: 140px; /* Ajuste para evitar que el video se vea cubierto */
+        }
+
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Barra de anuncios -->
+  <div class="announcement-bar">
+      <div class="arrow left-arrow" onclick="showPreviousAnnouncement()">&#9664;</div>
+      <div id="announcement-text">Barbería 82 les desea felices fiestas</div>
+      <div class="arrow right-arrow" onclick="showNextAnnouncement()">&#9654;</div>
+  </div>
+  
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+      <div class="navbar-links">
+          <a href="lomejor.html"><i class="fas fa-cut"></i> Lo mejor de..</a>
+          <a href="promos.html"><i class="fas fa-tags"></i> Promociones</a>
+      </div>
+      <div class="navbar-center">
+          <img src="img/logo.jpeg" alt="Logo de la Barbería" class="logo">
+      </div>
+      <div class="navbar-links">
+          <a href="https://www.facebook.com/tu_pagina" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="https://www.instagram.com/tu_perfil" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://www.tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+      </div>
+  </nav>
+  
+  <!-- Sección del video -->
+  <section class="banner">
+      <div class="video-container">
+          <iframe id="bg-video" src="https://www.youtube.com/embed/sL3iCtFga3Q?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&playlist=sL3iCtFga3Q"
+                  frameborder="0"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen></iframe>
+      </div>
+  </section>
+  
+  <script>
+      const announcements = [
+          "citas al 5614992142",
+          "El día sábado cortes al 2x1",
+          "El día domingo corte y mascarilla a tan solo 150$",
+          "Citas disponibles con el otro barber",
+          "El día viernes ya no existen espacios disponibles con el barber Julio",
+          "El día domingo depilación y perfilación de barba a tan solo 200$"
+      ];
+      let currentIndex = 0;
+  
+      function showNextAnnouncement() {
+          currentIndex = (currentIndex + 1) % announcements.length;
+          document.getElementById("announcement-text").textContent = announcements[currentIndex];
+      }
+  
+      function showPreviousAnnouncement() {
+          currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
+          document.getElementById("announcement-text").textContent = announcements[currentIndex];
+      }
+  
+      setInterval(showNextAnnouncement, 5000);
+  </script>
+  
+  <script>
+      window.addEventListener('scroll', function() {
+          const navbar = document.querySelector('.navbar');
+          if (window.scrollY > 50) {
+              navbar.classList.add('shrink');
+          } else {
+              navbar.classList.remove('shrink');
+          }
+      });
+  </script>
+  
+  </body>
+  </html>
+  <section id="about" class="about-section">
+    <div class="about-text">
+        <h2>¿QUIÉNES SOMOS?</h2>
+        <p>Somos una barbería que combina tradición y estilo moderno, ofreciendo cortes de cabello y arreglos de barba personalizados. Nuestro equipo profesional se dedica a brindarte una experiencia única en un ambiente acogedor. <strong>¡VEN A CONOCERNOS Y SAL CON EL MEJOR LOOK!</strong></p>
+  
+          <div class="about-buttons">
+            <button class="btn-explore" onclick="window.location.href='corte-cabello.html'">Explorar servicios</button>
+            <button class="btn-barbers" onclick="window.location.href='our.html'">Our barbers</button>
+        </div>
+    </div>
+    <div class="about-images">
+        <img src="img/1.jpeg" alt="Barbería">
+        <div class="about-overlay">
+            <p>DESDE</p>
+            <h3>1982</h3>
+            <img src="img/logo.png" alt="Logo Barbería 82">
+        </div>
+    </div>
+  </section>
+ 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iconos Flotantes</title>
+    <style>
+        /* Estilos para iconos flotantes */
+        .floating-icons {
+            position: fixed;
+            bottom: 20px; /* Distancia desde la parte inferior */
+            right: 20px;  /* Distancia desde la derecha */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Espacio entre los iconos */
+            z-index: 1000; /* Para que se muestre encima de otros elementos */
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 24px; /* Ajuste del tamaño del icono */
+        }
+
+        .icon:hover {
+            background-color: #ddd;
+            transform: scale(1.1); /* Efecto de agrandamiento */
+        }
+
+        .phone-icon {
+            background-color: #25d366; /* Verde para el icono de teléfono */
+            color: white;
+        }
+
+        .whatsapp-icon {
+            background-color: #128c7e; /* Verde de WhatsApp */
+            color: white;
+        }
+    </style>
+</head>
+    
+    <!-- Iconos flotantes -->
+    <div class="floating-icons">
+        <a href="tel:+1234567890" class="icon phone-icon" title="Llamar">📞</a>
+        <a href="https://wa.me/1234567890" class="icon whatsapp-icon" title="WhatsApp">💬</a>
+    </div>
+
+    <section id="about" class="content">
+        <section id="services" class="services-content">
+            <h2>Servicios</h2>
+            <div class="service-item">
+              <a href="corte-cabello.html">
+                <img src="img/2.jpeg" alt="Corte de Cabello">
+                <h3>Corte de Cabello</h3>
+              </a>
+              <p>Cortes modernos y clásicos adaptados a tu estilo personal.</p>
+            </div>
+          
+            <div class="service-item">
+              <a href="afeitado-clasico.html">
+                <img src="img/1.jpeg" alt="Afeitado Clásico">
+                <h3>Afeitado Clásico</h3>
+              </a>
+              <p>Afeitado con navaja tradicional para una piel suave y sin irritaciones.</p>
+            </div>
+          
+            <div class="service-item">
+              <a href="cuidado-barba.html">
+                <img src="img/4.jpeg" alt="Cuidado de Barba">
+                <h3>Cuidado de Barba</h3>
+              </a>
+              <p>Modelado y cuidado profesional de tu barba.</p>
+            </div>
+          </section>
+          
+        <section id="price-list" class="price-list">
+        <h2>Lista de Precios</h2>
+      
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Corte de Cabello</td>
+              <td>$120</td>
+            </tr>
+            <tr>
+              <td>Ritual de barba</td>
+              <td>$120</td>
+            </tr>
+            <tr>
+              <td>Depilacion de ceja </td>
+              <td>$50</td>
+            </tr>
+            <tr>
+              <td>Tinte para Cabello</td>
+              <td>$300</td>
+            </tr>
+            <tr>
+              <td>Lavado de Cabello</td>
+              <td>$50</td>
+            </tr>
+            <tr>
+              <td>Mascarilla</td>
+              <td>$80</td>
+            </tr>
+            <tr>
+              <td>Lavado de Cabello</td>
+              <td>$50</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <section id="gallery" class="gallery-content">
+        <h2>Galería</h2>
+        <div class="carousel">
+            <div class="carousel-item active">
+                <img src="img/1.jpeg" alt="Galería 1">
+                <p>Un ambiente elegante y relajante.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="img/2.jpeg" alt="Galería 2">
+                <p>Herramientas de alta calidad para tu cuidado personal.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="img/3.jpeg" alt="Galería 3">
+                <p>Nuestros barberos son expertos en estilo.</p>
+            </div>
+            <!-- Controles de navegación del carrusel -->
+            <a class="carousel-control-prev" role="button">
+                <span>&#10094;</span>
+            </a>
+            <a class="carousel-control-next" role="button">
+                <span>&#10095;</span>
+            </a>
+        </div>
+    </section>
+    
+    <style>
+    /* General styles for the gallery */
+    .gallery-content {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .carousel {
+        position: relative;
+        overflow: hidden;
+        max-width: 600px; /* Adjust the width as needed */
+        margin: 0 auto;
+    }
+    
+    .carousel-item {
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .carousel-item.active {
+        display: block;
+    }
+    
+    .carousel-item img {
+        width: 100%; /* Makes the image responsive */
+        height: auto; /* Maintains the aspect ratio */
+    }
+    
+    .carousel-item p {
+        margin-top: 10px;
+        font-size: 1rem; /* Adjust text size as needed */
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: #333; /* Adjust the color for visibility */
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .carousel-control-prev {
+        left: 10px;
+    }
+    
+    .carousel-control-next {
+        right: 10px;
+    }
+    
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        .carousel {
+            max-width: 100%;
+        }
+    
+        .carousel-item p {
+            font-size: 0.9rem;
+        }
+    
+        .carousel-control-prev,
+        .carousel-control-next {
+            font-size: 1.5rem;
+        }
+    }
+    </style>
+    
+      
+      <script>
+         document.addEventListener("DOMContentLoaded", () => {
+             const items = document.querySelectorAll(".carousel-item");
+             let currentIndex = 0;
+      
+             document.querySelector(".carousel-control-next").addEventListener("click", () => {
+                 items[currentIndex].classList.remove("active");
+                 currentIndex = (currentIndex + 1) % items.length;
+                 items[currentIndex].classList.add("active");
+             });
+      
+             document.querySelector(".carousel-control-prev").addEventListener("click", () => {
+                 items[currentIndex].classList.remove("active");
+                 currentIndex = (currentIndex - 1 + items.length) % items.length;
+                 items[currentIndex].classList.add("active");
+             });
+         });
+      </script>
+     </section>
+     <section>
+      <style>
+        .card-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: space-around;
+          padding: 20px;
+        }
+    
+        .card {
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          overflow: hidden;
+          text-align: center;
+          width: 300px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .card img {
+          width: 100%;
+          height: auto;
+        }
+    
+        .card h3 {
+          margin: 15px 0;
+        }
+    
+        .card p {
+          padding: 0 15px 15px;
+        }
+    
+        .card a {
+          text-decoration: none;
+          color: inherit;
+        }
+    
+        .card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+      </style>
+    
+      <div class="card-container">
+        <div class="card">
+          <a href="curso-grecas.html">
+            <img src="img/10.jpeg" alt="Curso de Grecas">
+            <h3>Curso de Grecas</h3>
+          </a>
+          <p>Un ambiente elegante y relajante.</p>
+        </div>
+        <div class="card">
+          <a href="curso-corte-barba.html">
+            <img src="img/9.jpeg" alt="Curso de Corte de Barba">
+            <h3>Curso de Corte de Barba</h3>
+          </a>
+          <p>Herramientas de alta calidad para tu cuidado personal.</p>
+        </div>
+        <div class="card">
+          <a href="curso-estilo-clasico.html">
+            <img src="img/8.jpeg" alt="Curso de Estilo Clásico">
+            <h3>Curso de Estilo Clásico</h3>
+          </a>
+          <p>Nuestros barberos son expertos en estilo.</p>
+        </div>
+      </div>
+    </section>
+  
+    <!DOCTYPE html>
+  <section id="booking">
+    <h2>Reserva tu Cita</h2>
+    <div class="booking-container">
+        <a href="reservar.html" class="booking-link">
+            <img src="img/19.jpg" alt="Reserva tu cita" class="booking-image">
+            <div class="overlay">
+                <p>¡Reserva ahora!</p>
+            </div>
+        </a>
+    </div>
+</section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Productos</title>
+    <style>
+        /* Main container for products */
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Style for individual product cards */
+        .product-container {
+            width: 300px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for image containers with rotating background */
+        .image-container {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+            border-radius: 5px;
+        }
+
+        /* Additional styling for product info and buttons */
+        .product-info {
+            margin-top: 10px;
+        }
+
+        .view-details {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details:hover {
+            background-color: #0056b3;
+        }
+
+        /* Container and styling for the "Ver todos" button */
+        .view-all-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .view-all {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .view-all:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+    <div class="product-grid">
+        <!-- Producto 1 -->
+        <div class="product-container">
+            <div class="image-container" id="productImage1"></div>
+            <div class="product-info">
+                <h3>Producto 1</h3>
+                <p>Precio: $50</p>
+            </div>
+            <a href="product.html?id=1" class="view-details">Ver detalles</a>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-container">
+            <div class="image-container" id="productImage2"></div>
+            <div class="product-info">
+                <h3>Producto 2</h3>
+                <p>Precio: $75</p>
+            </div>
+            <a href="product.html?id=2" class="view-details">Ver detalles</a>
+        </div>
+    </div>
+
+    <!-- Single "Ver todos" button for all products -->
+    <div class="view-all-container">
+        <a href="product.html" class="view-all">Ver todos</a>
+    </div>
+
+    <script>
+        // Images for each product
+        const productImages = {
+            productImage1: [
+                'img/po.png',
+                'img/po1.png',
+                'img/po.png',
+                'img/po1.png',
+            ],
+            productImage2: [
+                'img/p4.webp',
+                'img/p5.webp',
+                'img/p6.webp'
+            ]
+        };
+
+        // Current image indices for each container
+        let imageIndices = {
+            productImage1: 0,
+            productImage2: 0
+        };
+
+        // Function to change the image of a container
+        function changeImage(containerId) {
+            const imageContainer = document.getElementById(containerId);
+            const images = productImages[containerId];
+            if (imageContainer && images) {
+                imageContainer.style.backgroundImage = `url(${images[imageIndices[containerId]]})`;
+                imageIndices[containerId] = (imageIndices[containerId] + 1) % images.length;
+            }
+        }
+
+        // Change images every 3 seconds
+        setInterval(() => {
+            changeImage('productImage1');
+            changeImage('productImage2');
+        }, 3000);
+
+        // Load the first image on page load
+        window.onload = () => {
+            changeImage('productImage1');
+            changeImage('productImage2');
+        };
+    </script>
+
+<section id="contact" class="contact content">
+  <div class="contact-card">
+      <h2>Contáctanos</h2>
+      <p><strong>Barbería 82</strong></p>
+      <p><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> 5614992142</p>
+      <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:franjavis511@gmail.com">franjavis511@gmail.com</a></p>
+      <button onclick="window.open('https://www.google.com/maps?q=Barberia82,+Av.+Juarez+Sur,+Nacozari,+43808+Tizayuca,+Hgo.')">
+          <i class="fas fa-map-marker-alt"></i> Mostrar en Google Maps
+      </button>
+  </div>
+</section>
+
+
+    <footer>
+        <p>&copy; Siendo la mejor competencia desde... </p>
+    </footer>
+    <script>
+      let index = 0;
+const items = document.querySelectorAll('.carousel-item');
+
+function showNextImage() {
+    items[index].classList.remove('active');
+    index = (index + 1) % items.length;
+    items[index].classList.add('active');
+}
+
+setInterval(showNextImage, 3000); // Cambia cada 3 segundos
+
+      document.addEventListener("DOMContentLoaded", () => {
+    let currentIndex = 0;
+    const items = document.querySelectorAll(".carousel-item");
+    const totalItems = items.length;
+
+    function showNextItem() {
+        items[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % totalItems;
+        items[currentIndex].classList.add("active");
+    }
+
+    setInterval(showNextItem, 3000);
+});
+
+      document.addEventListener("DOMContentLoaded", () => {
+    const aboutSection = document.querySelector("#about");
+
+    function handleScroll() {
+        const sectionPosition = aboutSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (sectionPosition < screenPosition) {
+            aboutSection.classList.add("show");
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Llamada inicial por si la sección ya está visible al cargar la página
+});
+// JavaScript para animación de scroll
+document.addEventListener("scroll", () => {
+    const aboutSection = document.querySelector("#about");
+    const position = aboutSection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (position < windowHeight) {
+        aboutSection.classList.add("slide-in");
+    }
+});
+
+  </script>  
+</body>
+</html>

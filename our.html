@@ -1,0 +1,93 @@
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestros Barberos</title>
+  <style>
+    /* Aquí pega el código CSS */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .barbero-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .barbero {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .barbero:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .barbero img {
+      width: 100%;
+      border-bottom: 3px solid #ddd;
+    }
+
+    .barbero h2 {
+      margin: 15px 0 10px;
+      font-size: 22px;
+    }
+
+    .barbero p {
+      padding: 0 15px;
+      color: #555;
+    }
+
+    .barbero a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      background-color: #007bff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .barbero a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <section id="barberos">
+        <div class="barbero-container">
+            <div class="barbero">
+              <img src="img/julio.png" alt="Foto de Juan, barbero">
+              <h2>Juan Pérez</h2>
+              <p>Con más de 10 años de experiencia, Juan es experto en cortes clásicos y fades modernos. Su atención al detalle y trato amable hacen que cada cliente salga satisfecho.</p>
+              <p><strong>Especialidades:</strong> Corte clásico, arreglo de barba, fade.</p>
+              <p><strong>Certificación:</strong> Barber School Academy.</p>
+              <a href="https://instagram.com/juan" target="_blank">Instagram</a>
+            </div>
+            <div class="barbero">
+              <img src="img/Oscar.png" alt="Foto de Pedro, barbero">
+              <h2>Pedro López</h2>
+              <p>Pedro se especializa en estilos modernos y diseños únicos. Con 5 años de experiencia, siempre está innovando con nuevas técnicas.</p>
+              <p><strong>Especialidades:</strong> Diseño en cortes, barbería moderna.</p>
+              <a href="https://instagram.com/pedro" target="_blank">Instagram</a>
+            </div>
+          </div>      
+    </section>
+    
+</body>
+</html>

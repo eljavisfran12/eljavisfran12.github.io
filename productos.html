@@ -1,0 +1,224 @@
+<style>
+    /* Contenedor principal del header */
+    .header {
+      display: flex;
+      flex-direction: column; /* Coloca el título y el logo en columna */
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+  
+    /* Título dentro del header */
+    .header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+  
+    /* Estilo del logo */
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background-color: #fff;
+      background-image: url('img/fondo.png'); /* Fondo de la imagen */
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    /* Imagen dentro del logo */
+    .logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  </style>
+  </head>
+  <body>
+  <header>
+    <h1>Barbería 82</h1>
+  </header>
+  <!-- Header con logo centrado -->
+  <header class="header">
+    <div class="logo">
+        <img src="img/logo.jpeg" alt="Logo de la Barbería">
+    </div>
+  </header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <html lang="es">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Barbería 82</title>
+      <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    
+  <nav>
+    <a href="index.html"><i class="fas fa-cut"></i> Lo mejor de..</a>
+    <a href="servicios.html"><i class="fas fa-tags"></i> Promociones</a>
+    <a href="https://www.facebook.com/tu_pagina" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://www.instagram.com/tu_perfil" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+  </nav>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Todos los Productos</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        /* Price Range */
+        input[type="range"] {
+            width: 100%;
+        }
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            flex-grow: 1;
+        }
+        .product-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .product-item:hover {
+            transform: translateY(-5px);
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 10px;
+        }
+        .product-price {
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar for Filters -->
+        <div class="sidebar">
+            <h3>Filtrar Productos</h3>
+            <div class="filter-section">
+                <label>Precio:</label>
+                <input type="range" id="priceFilter" min="0" max="500" step="10" oninput="updateFilters()">
+                <span id="priceValue">Hasta $500</span>
+            </div>
+            <div class="filter-section">
+                <label>Tipo de Producto:</label>
+                <select id="typeFilter" onchange="updateFilters()">
+                    <option value="all">Todos</option>
+                    <option value="pomada">Pomada para peinar</option>
+                    <option value="balsamo">Bálsamo para barba</option>
+                </select>
+            </div>
+            <div class="filter-section">
+                <label>Marca:</label>
+                <select id="brandFilter" onchange="updateFilters()">
+                    <option value="all">Todas</option>
+                    <option value="capital">Capital Grooming</option>
+                    <option value="donporfirio">Don Porfirio</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product grid -->
+        <div id="productGrid" class="product-grid">
+            <!-- The products will be loaded here dynamically by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: 'Pomada Clásica', brand: 'capital', type: 'pomada', price: 320, available: true, img: 'img/p1.webp' },
+            { id: 2, name: 'Pomada Mate', brand: 'capital', type: 'pomada', price: 320, available: true, img: 'img/p2.webp' },
+            { id: 3, name: 'Bálsamo Lavanda', brand: 'donporfirio', type: 'balsamo', price: 420, available: true, img: 'img/p3.webp' },
+            { id: 4, name: 'Beard Balm', brand: 'mansface', type: 'balsamo', price: 320, available: true, img: 'img/p4.webp' }
+        ];
+
+        // Filter products based on selected options
+        function updateFilters() {
+            const priceFilter = document.getElementById('priceFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const brandFilter = document.getElementById('brandFilter').value;
+            document.getElementById('priceValue').textContent = `Hasta $${priceFilter}`;
+
+            const filteredProducts = products.filter(product => {
+                const matchesPrice = product.price <= priceFilter;
+                const matchesType = typeFilter === 'all' || product.type === typeFilter;
+                const matchesBrand = brandFilter === 'all' || product.brand === brandFilter;
+                return matchesPrice && matchesType && matchesBrand;
+            });
+            displayProducts(filteredProducts);
+        }
+
+        // Display products in the grid
+        function displayProducts(products) {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = ''; // Clear existing products
+            products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product-item');
+                productDiv.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p class="product-price">$${product.price}</p>
+                    </div>
+                `;
+                productGrid.appendChild(productDiv);
+            });
+        }
+
+        // Initialize filters and display all products on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateFilters();
+        });
+    </script>
+</body>
+</html>

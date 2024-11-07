@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <style>
+        /* Estilos similares a los anteriores */
+        .product-detail-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 900px;
+            margin: 50px auto;
+            font-family: Arial, sans-serif;
+        }
+        .thumbnail-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .thumbnail-container img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            transition: border 0.3s;
+        }
+        .thumbnail-container img:hover {
+            border: 1px solid #000;
+        }
+        .main-image {
+            width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .product-info {
+            max-width: 400px;
+        }
+        .product-info h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .product-info p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin: 10px 0;
+        }
+        .buy-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .buy-button:hover {
+            background-color: #555;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal de los detalles del producto -->
+    <div class="product-detail-container">
+        <!-- Contenedor de las miniaturas -->
+        <div class="thumbnail-container" id="thumbnailContainer"></div>
+
+        <!-- Imagen principal del producto -->
+        <img src="" alt="Imagen principal" class="main-image" id="mainImage">
+
+        <!-- Información del producto -->
+        <div class="product-info">
+            <h1 id="productName">Nombre del Producto</h1>
+            <p id="productDescription">Descripción del producto.</p>
+            <p class="product-price" id="productPrice">Precio: $0</p>
+            <a href="#" class="buy-button">Comprar Ahora</a>
+            <a href="index.html" class="back-link">Volver al catálogo</a>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los productos
+        const products = {
+            1: {
+                name: "Don Porfirio - Bálsamo para Barba",
+                description: "Cuidar tu barba nunca fue tan fácil. Experimenta el cuidado de Don Porfirio con el Bálsamo para Barba Aroma Lavanda.",
+                price: "$50",
+                mainImage: "ruta-a-imagen-del-producto-1.jpg",
+                thumbnails: [
+                    "ruta-a-imagen-del-producto-1.jpg",
+                    "ruta-a-imagen-del-producto-2.jpg",
+                    "ruta-a-imagen-del-producto-3.jpg"
+                ]
+            },
+            2: {
+                name: "Producto 2 - Aceite para Barba",
+                description: "Un aceite que proporciona hidratación intensa y un aroma fresco.",
+                price: "$70",
+                mainImage: "ruta-a-imagen-del-producto-2-1.jpg",
+                thumbnails: [
+                    "ruta-a-imagen-del-producto-2-1.jpg",
+                    "ruta-a-imagen-del-producto-2-2.jpg",
+                    "ruta-a-imagen-del-producto-2-3.jpg"
+                ]
+            },
+            3: {
+                name: "Producto 3 - Cera para Bigote",
+                description: "Mantén tu bigote en forma con nuestra cera de fijación duradera.",
+                price: "$90",
+                mainImage: "ruta-a-imagen-del-producto-3-1.jpg",
+                thumbnails: [
+                    "ruta-a-imagen-del-producto-3-1.jpg",
+                    "ruta-a-imagen-del-producto-3-2.jpg",
+                    "ruta-a-imagen-del-producto-3-3.jpg"
+                ]
+            }
+        };
+
+        // Obtener el ID del producto de la URL
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get("id");
+
+        // Función para cargar los detalles del producto
+        function loadProductDetails(id) {
+            const product = products[id];
+            if (product) {
+                document.getElementById("productName").textContent = product.name;
+                document.getElementById("productDescription").textContent = product.description;
+                document.getElementById("productPrice").textContent = `Precio: ${product.price}`;
+                document.getElementById("mainImage").src = product.mainImage;
+
+                // Cargar miniaturas
+                const thumbnailContainer = document.getElementById("thumbnailContainer");
+                thumbnailContainer.innerHTML = ""; // Limpiar miniaturas anteriores
+                product.thumbnails.forEach(src => {
+                    const img = document.createElement("img");
+                    img.src = src;
+                    img.alt = "Vista del producto";
+                    img.onclick = () => changeImage(src);
+                    thumbnailContainer.appendChild(img);
+                });
+            }
+        }
+
+        // Cambiar la imagen principal
+        function changeImage(imageSrc) {
+            document.getElementById("mainImage").src = imageSrc;
+        }
+
+        // Cargar los detalles del producto seleccionado
+        if (productId) {
+            loadProductDetails(productId);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Peluquería</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        /* Botón en el encabezado */
+        .header-button a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-button a:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Menú de navegación */
+        .menu {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .menu a:hover {
+            color: #ff7e5f;
+        }
+        
+        /* Diseño de galería */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            justify-content: center;
+        }
+        
+        /* Configuración de cada sección */
+        .section {
+            flex: 0 0 28%; /* Ajuste de tamaño para que sean un poco más pequeñas */
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Imágenes recortadas y del mismo tamaño */
+        .section img {
+            width: 100%;
+            height: 200px; /* Altura fija para todas las imágenes */
+            object-fit: cover; /* Recorta las imágenes para que ocupen el espacio sin deformarse */
+            transition: transform 0.5s ease;
+        }
+        
+        .section:hover img {
+            transform: scale(1.1);
+        }
+        
+        .section h2 {
+            background-color: #ff7e5f;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            font-size: 1.3em;
+            text-align: center;
+        }
+        
+        .section p {
+            padding: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="header-button">
+            <a href="index.html">Inicio</a>
+        </div>
+        <h1>Tipos de Servicio</h1>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav class="menu">
+        <a href="corte-cabello.html">Corte Pixie</a>
+        <a href="afeitado-clasico.html">Afeitado Clásico</a>
+        <a href="cuidado-barba.html">Cuidado de Barba</a>
+    </nav>
+
+    <!-- Galería de servicios -->
+    <div class="gallery">
+        <section class="section">
+            <h2>Corte Pixie</h2>
+            <img src="img/desvan.png" alt="Corte de Cabello">
+            <p><strong>Descripción:</strong> Corte recto a la altura de la mandíbula o ligeramente debajo, elegante y sencillo.</p>
+            <p><strong>Ideal para:</strong> Rostros ovalados, alargados o en forma de corazón.</p>
+            <p><strong>Estilo:</strong> Sofisticado, versátil para peinar liso o con ondas.</p>
+        </section>
+
+        <section class="section">
+            <h2>Afeitado Clásico</h2>
+            <img src="img/crop.png" alt="Long Bob">
+            <p><strong>Descripción:</strong> Similar al Bob, pero más largo, generalmente hasta los hombros.</p>
+            <p><strong>Ideal para:</strong> Todo tipo de rostros, especialmente los redondos.</p>
+            <p><strong>Estilo:</strong> Versátil, fácil de mantener y estilizar.</p>
+        </section>
+
+        <section class="section">
+            <h2>Cuidado de Barba</h2>
+            <img src="img/v.png" alt="Corte de Cabello">
+            <p><strong>Descripción:</strong> Un estilo corto y audaz, generalmente a la altura de las orejas.</p>
+            <p><strong>Ideal para:</strong> Rostros ovalados, cuadrados o en forma de corazón.</p>
+            <p><strong>Estilo:</strong> Minimalista, elegante y versátil para peinar.</p>
+        </section>
+        <section class="section">
+            <h2>Corte Pixie</h2>
+            <img src="img/desvan.png" alt="Corte de Cabello">
+            <p><strong>Descripción:</strong> Corte recto a la altura de la mandíbula o ligeramente debajo, elegante y sencillo.</p>
+            <p><strong>Ideal para:</strong> Rostros ovalados, alargados o en forma de corazón.</p>
+            <p><strong>Estilo:</strong> Sofisticado, versátil para peinar liso o con ondas.</p>
+        </section>
+
+        <section class="section">
+            <h2>Afeitado Clásico</h2>
+            <img src="img/crop.png" alt="Long Bob">
+            <p><strong>Descripción:</strong> Similar al Bob, pero más largo, generalmente hasta los hombros.</p>
+            <p><strong>Ideal para:</strong> Todo tipo de rostros, especialmente los redondos.</p>
+            <p><strong>Estilo:</strong> Versátil, fácil de mantener y estilizar.</p>
+        </section>
+
+        <section class="section">
+            <h2>Cuidado de Barba</h2>
+            <img src="img/v.png" alt="Corte de Cabello">
+            <p><strong>Descripción:</strong> Un estilo corto y audaz, generalmente a la altura de las orejas.</p>
+            <p><strong>Ideal para:</strong> Rostros ovalados, cuadrados o en forma de corazón.</p>
+            <p><strong>Estilo:</strong> Minimalista, elegante y versátil para peinar.</p>
+        </section>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Barbería Elegante</p>
+    </footer>
+</body>
+</html>
